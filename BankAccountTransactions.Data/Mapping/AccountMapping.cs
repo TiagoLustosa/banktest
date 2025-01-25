@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using BankAccountTransactions.Domain;
-using BankAccountTransactionsDomain.Entity;
+using BankAccountTransactions.Domain.Entity;
 
 namespace BankAccountTransactions.Data.Mappings
 {
@@ -18,9 +17,9 @@ namespace BankAccountTransactions.Data.Mappings
                 .HasDefaultValueSql("gen_random_uuid()")
                 .IsRequired();
 
-            builder.Property(x => x.CustomerId)
+            builder.Property(x => x.CustomerDocument)
                 .HasColumnName("customerId")
-                .HasColumnType("uuid")
+                .HasColumnType("varchar(18)")
                 .IsRequired(); 
 
             builder.Property(x => x.AccountNumber)
@@ -36,7 +35,7 @@ namespace BankAccountTransactions.Data.Mappings
             
             builder.HasOne<User>() 
                 .WithMany()
-                .HasForeignKey(x => x.CustomerId)
+                .HasForeignKey(x => x.Id)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

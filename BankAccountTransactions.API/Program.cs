@@ -1,4 +1,7 @@
+using BankAccountTransactions.Application.UseCase;
 using BankAccountTransactions.Data.Context;
+using BankAccountTransactions.Data.Repository;
+using BankAccountTransactions.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +17,12 @@ builder.Services.AddDbContext<BankAccountTransactionsContext>(options =>
         builder.Configuration.GetConnectionString("PostgresConnection")
     ).UseEnumCheckConstraints()
 );
+
+//DI
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<GetUserTransactionsByDateUseCase>();
 
 var app = builder.Build();
 

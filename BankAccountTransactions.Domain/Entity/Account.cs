@@ -2,20 +2,20 @@
 
 using BankAccountTransactions.Domain.Interface;
 
-namespace BankAccountTransactions.Domain
+namespace BankAccountTransactions.Domain.Entity
 {
     public class Account : IEntity<Guid>
     {
-        public Account(Guid id, Guid customerId, string accountNumber, double balance) : base(id)
+        public Account(Guid id, string customerDocument, string accountNumber, decimal balance) : base(id)
         {
-            CustomerId = customerId;
+            CustomerDocument = customerDocument;
             AccountNumber = accountNumber;
             Balance = balance;
         }
 
-        public Guid CustomerId { get; set; }
+        public string CustomerDocument { get; set; }
         public string AccountNumber { get; set; }
-        public double Balance { get; set; }
+        public decimal Balance { get; set; }
         
     }
 }

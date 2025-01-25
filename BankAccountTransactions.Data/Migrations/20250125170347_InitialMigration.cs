@@ -22,7 +22,7 @@ namespace BankAccountTransactions.Data.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     senderDocument = table.Column<string>(type: "varchar(18)", nullable: false),
                     receiverDocument = table.Column<string>(type: "varchar(18)", nullable: false),
-                    amount = table.Column<double>(type: "numeric", nullable: false)
+                    amount = table.Column<decimal>(type: "numeric", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -56,7 +56,7 @@ namespace BankAccountTransactions.Data.Migrations
                     id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
                     customerId = table.Column<Guid>(type: "uuid", nullable: false),
                     accountNumber = table.Column<string>(type: "varchar(18)", nullable: false),
-                    balance = table.Column<double>(type: "numeric", nullable: false)
+                    balance = table.Column<decimal>(type: "numeric", nullable: false)
                 },
                 constraints: table =>
                 {

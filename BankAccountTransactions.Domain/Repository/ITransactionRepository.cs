@@ -1,10 +1,10 @@
-﻿using BankAccountTransactions.Domain.Interface;
-using BankAccountTransactionsDomain.Entity;
+﻿using BankAccountTransactions.Domain.Entity;
+using BankAccountTransactions.Domain.Interface;
 
 
 namespace BankAccountTransactions.Domain.Repository
 {
-    public interface ITransactionRepository : IRepository<Transaction, Guid>
+    public interface ITransactionRepository : IRepository<Transaction>
     {
     }
 }

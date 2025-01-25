@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountTransactions.Domain", "BankAccountTransactions.Domain\BankAccountTransactions.Domain.csproj", "{F3C7416A-9FED-4554-B9E6-40B0ED2F1B48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountTransactions.Domain", "BankAccountTransactions.Domain\BankAccountTransactions.Domain.csproj", "{F3C7416A-9FED-4554-B9E6-40B0ED2F1B48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountTransactions.Data", "BankAccountTransactions.Data\BankAccountTransactions.Data.csproj", "{46A5FF52-63C5-4766-B7F9-8B927F9346AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountTransactions.Data", "BankAccountTransactions.Data\BankAccountTransactions.Data.csproj", "{46A5FF52-63C5-4766-B7F9-8B927F9346AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountTransactions.API", "BankAccountTransactions.API\BankAccountTransactions.API.csproj", "{D8B128B5-2F2A-468C-BF9B-A90C3C576E4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountTransactions.API", "BankAccountTransactions.API\BankAccountTransactions.API.csproj", "{D8B128B5-2F2A-468C-BF9B-A90C3C576E4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountTransactions.Application", "BankAccountTransactions.Application\BankAccountTransactions.Application.csproj", "{DE248FC1-798E-4776-B45A-5E6B488DE5B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D8B128B5-2F2A-468C-BF9B-A90C3C576E4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8B128B5-2F2A-468C-BF9B-A90C3C576E4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8B128B5-2F2A-468C-BF9B-A90C3C576E4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE248FC1-798E-4776-B45A-5E6B488DE5B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE248FC1-798E-4776-B45A-5E6B488DE5B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE248FC1-798E-4776-B45A-5E6B488DE5B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE248FC1-798E-4776-B45A-5E6B488DE5B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

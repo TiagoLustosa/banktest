@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BankAccountTransactions.Application\BankAccountTransactions.Application.csproj" />
     <ProjectReference Include="..\BankAccountTransactions.Data\BankAccountTransactions.Data.csproj" />
     <ProjectReference Include="..\BankAccountTransactions.Domain\BankAccountTransactions.Domain.csproj" />
   </ItemGroup>

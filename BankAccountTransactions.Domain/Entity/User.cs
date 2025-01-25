@@ -1,8 +1,7 @@
-﻿using BankAccountTransactions.Domain;
-using BankAccountTransactions.Domain.Interface;
-using BankAccountTransactionsDomain_.Enum;
+﻿using BankAccountTransactions.Domain.Interface;
+using BankAccountTransactions.Domain.Enum;
 
-namespace BankAccountTransactionsDomain.Entity
+namespace BankAccountTransactions.Domain.Entity
 {
     public class User : IEntity<Guid>
     {

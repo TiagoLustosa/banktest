@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using BankAccountTransactionsDomain.Entity;
+using BankAccountTransactions.Domain.Entity;
 
 namespace BankAccountTransactions.Data.Mappings
 {

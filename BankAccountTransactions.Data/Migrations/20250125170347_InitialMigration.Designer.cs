@@ -38,7 +38,7 @@ namespace BankAccountTransactions.Data.Migrations
                         .HasColumnType("varchar(18)")
                         .HasColumnName("accountNumber");
 
-                    b.Property<double>("Balance")
+                    b.Property<decimal>("Balance")
                         .HasColumnType("numeric")
                         .HasColumnName("balance");
 
@@ -64,7 +64,7 @@ namespace BankAccountTransactions.Data.Migrations
                         .HasColumnName("id")
                         .HasDefaultValueSql("gen_random_uuid()");
 
-                    b.Property<double>("Amount")
+                    b.Property<decimal>("Amount")
                         .HasColumnType("numeric")
                         .HasColumnName("amount");
 

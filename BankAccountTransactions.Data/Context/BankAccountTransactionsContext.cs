@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
+using BankAccountTransactions.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
-using BankAccountTransactionsDomain.Entity;
-using BankAccountTransactions.Domain;
 
 namespace BankAccountTransactions.Data.Context
 {

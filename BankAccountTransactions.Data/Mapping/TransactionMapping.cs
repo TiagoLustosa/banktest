@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using BankAccountTransactionsDomain.Entity;
+using BankAccountTransactions.Domain.Entity;
 
 namespace BankAccountTransactions.Data.Mappings
 {
@@ -30,6 +30,10 @@ namespace BankAccountTransactions.Data.Mappings
             builder.Property(x => x.Amount)
                 .HasColumnName("amount")
                 .HasColumnType("numeric");
+            builder.Property(x => x.TransactionDate)
+                   .HasColumnName("transactiondate")
+                   .HasColumnType("date");
+                
         }
     }
 
