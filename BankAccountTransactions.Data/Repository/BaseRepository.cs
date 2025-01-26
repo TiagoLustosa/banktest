@@ -24,7 +24,11 @@ namespace BankAccountTransactions.Domain.Repository
         }
         public async Task<T?> GetByDocument(string userDocument)
         {
-            return await _context.Set<T>().FindAsync(userDocument);
+            if (string.IsNullOrWhiteSpace(userDocument))
+                throw new ArgumentException("Document cannot be null or empty.", nameof(userDocument));
+
+            return await _context.Set<T>()
+                .FirstOrDefaultAsync(entity => EF.Property<string>(entity, "Document") == userDocument);
         }
         public async Task Insert(T entity)
         {

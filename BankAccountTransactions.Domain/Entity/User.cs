@@ -3,15 +3,20 @@ using BankAccountTransactions.Domain.Enum;
 
 namespace BankAccountTransactions.Domain.Entity
 {
-    public class User : IEntity<Guid>
+    public class User : Entity<Guid>
     {
-        public User(Guid id, string fullName, string email, string password, string document, Guid accountId, UserType userType) : base(id)
+        public User()
+        {
+            
+        }
+        public User(Guid id, string fullName, string email, string password, string document, Guid accountId, Account account, UserType userType) : base(id)
         {
             FullName = fullName;
             Email = email;
             Password = password;
             Document = document;
             AccountId = accountId;
+            Account = account;
             UserType = userType;
         }
 
@@ -20,7 +25,8 @@ namespace BankAccountTransactions.Domain.Entity
         public string Password { get; set; }
         public string Document { get; set; }
         public Guid AccountId { get; set; }
-        public UserType UserType{ get; set; }
+        public Account Account { get; set; }
+        public UserType UserType { get; set; }
 
     }
 }

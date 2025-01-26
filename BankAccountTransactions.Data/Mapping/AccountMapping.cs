@@ -8,35 +8,34 @@ namespace BankAccountTransactions.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Account> builder)
         {
-            builder.ToTable("accounts", "bank"); 
+            builder.ToTable("accounts", "bank");
 
             builder.HasKey(x => x.Id);
 
             builder.Property(x => x.Id)
-                .HasColumnName("id")
-                .HasDefaultValueSql("gen_random_uuid()")
+                .ValueGeneratedOnAdd()
                 .IsRequired();
 
-            builder.Property(x => x.CustomerDocument)
-                .HasColumnName("customerId")
+            builder.Property(x => x.Document)
+                .HasColumnName("document")
                 .HasColumnType("varchar(18)")
-                .IsRequired(); 
+                .IsRequired();
 
             builder.Property(x => x.AccountNumber)
-                .HasColumnName("accountNumber") 
+                .HasColumnName("accountNumber")
                 .HasColumnType("varchar(18)")
                 .IsRequired();
 
             builder.Property(x => x.Balance)
                 .HasColumnName("balance")
                 .HasColumnType("numeric");
-            
+
+            builder.Property(x => x.CreatedAt)
+                .HasColumnName("createdAt")
+                .HasColumnType("timestamp");
+
             builder.HasIndex(x => x.AccountNumber).IsUnique();
-            
-            builder.HasOne<User>() 
-                .WithMany()
-                .HasForeignKey(x => x.Id)
-                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

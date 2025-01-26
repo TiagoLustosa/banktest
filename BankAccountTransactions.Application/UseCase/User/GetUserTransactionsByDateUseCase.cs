@@ -1,4 +1,5 @@
-﻿using BankAccountTransactions.Domain.Entity;
+﻿using BankAccountTransactions.Domain.Dto;
+using BankAccountTransactions.Domain.Entity;
 using BankAccountTransactions.Domain.Repository;
 
 namespace BankAccountTransactions.Application.UseCase
@@ -12,9 +13,9 @@ namespace BankAccountTransactions.Application.UseCase
             _userRepository = userRepository;
         }
 
-        public async Task<IEnumerable<Transaction>> Execute(string userDocument, DateTime initalDate, DateTime finalDate)
+        public async Task<IEnumerable<Transaction>> Execute(GetTransactionByDateDto getTransactionByDateDto)
         {
-            return await _userRepository.GetUserTransactionsByDate(userDocument, initalDate, finalDate);  
+            return await _userRepository.GetUserTransactionsByDate(getTransactionByDateDto);  
         }
     }
 }

@@ -15,7 +15,7 @@ namespace BankAccountTransactions.Application.Service
             _httpClient = httpClient;
         }
 
-        public async Task SendNotificationAsync(User user, string message)
+        public async Task<bool> SendNotificationAsync(User user, string message)
         {
             if (user == null) throw new ArgumentNullException(nameof(user));
             if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException("Message cannot be empty.", nameof(message));
@@ -30,6 +30,7 @@ namespace BankAccountTransactions.Application.Service
                 {
                     throw new Exception("Failed to send notification.");
                 }
+                return true;
             }
             catch (Exception ex)
             {

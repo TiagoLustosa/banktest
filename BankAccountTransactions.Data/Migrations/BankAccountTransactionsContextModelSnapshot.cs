@@ -22,13 +22,11 @@ namespace BankAccountTransactions.Data.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BankAccountTransactions.Domain.Account", b =>
+            modelBuilder.Entity("BankAccountTransactions.Domain.Entity.Account", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("gen_random_uuid()");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("AccountNumber")
                         .IsRequired()
@@ -39,27 +37,29 @@ namespace BankAccountTransactions.Data.Migrations
                         .HasColumnType("numeric")
                         .HasColumnName("balance");
 
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uuid")
-                        .HasColumnName("customerId");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp")
+                        .HasColumnName("createdAt");
+
+                    b.Property<string>("Document")
+                        .IsRequired()
+                        .HasColumnType("varchar(18)")
+                        .HasColumnName("document");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AccountNumber")
                         .IsUnique();
 
-                    b.HasIndex("CustomerId");
-
                     b.ToTable("accounts", "bank");
                 });
 
-            modelBuilder.Entity("BankAccountTransactionsDomain.Entity.Transaction", b =>
+            modelBuilder.Entity("BankAccountTransactions.Domain.Entity.Transaction", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("gen_random_uuid()");
+                        .HasColumnName("id");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric")
@@ -75,18 +75,21 @@ namespace BankAccountTransactions.Data.Migrations
                         .HasColumnType("varchar(18)")
                         .HasColumnName("senderDocument");
 
+                    b.Property<DateTime>("TransactionDate")
+                        .HasColumnType("timestamp")
+                        .HasColumnName("transactiondate");
+
                     b.HasKey("Id");
 
                     b.ToTable("transactions", "bank");
                 });
 
-            modelBuilder.Entity("BankAccountTransactionsDomain.Entity.User", b =>
+            modelBuilder.Entity("BankAccountTransactions.Domain.Entity.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid")
-                        .HasColumnName("id")
-                        .HasDefaultValueSql("gen_random_uuid()");
+                        .HasColumnName("id");
 
                     b.Property<Guid>("AccountId")
                         .HasColumnType("uuid")
@@ -119,6 +122,9 @@ namespace BankAccountTransactions.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AccountId")
+                        .IsUnique();
+
                     b.HasIndex("Document")
                         .IsUnique()
                         .HasDatabaseName("IX_User_Document");
@@ -129,13 +135,15 @@ namespace BankAccountTransactions.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BankAccountTransactions.Domain.Account", b =>
+            modelBuilder.Entity("BankAccountTransactions.Domain.Entity.User", b =>
                 {
-                    b.HasOne("BankAccountTransactionsDomain.Entity.User", null)
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                    b.HasOne("BankAccountTransactions.Domain.Entity.Account", "Account")
+                        .WithOne()
+                        .HasForeignKey("BankAccountTransactions.Domain.Entity.User", "AccountId")
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Account");
                 });
 #pragma warning restore 612, 618
         }

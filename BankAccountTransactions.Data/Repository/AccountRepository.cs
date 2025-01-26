@@ -17,7 +17,7 @@ namespace BankAccountTransactions.Data.Repository
                 throw new ArgumentException("User document cannot be empty.", nameof(userDocument));
 
             var account = await _context.Accounts
-                .FirstOrDefaultAsync(a => a.CustomerDocument == userDocument);
+                .FirstOrDefaultAsync(a => a.Document == userDocument);
 
             if (account == null)
                 throw new InvalidOperationException("Account not found for the specified user.");
@@ -33,7 +33,7 @@ namespace BankAccountTransactions.Data.Repository
                 throw new ArgumentException("Amount must be greater than zero.", nameof(amount));
 
             var account = await _context.Accounts
-                .FirstOrDefaultAsync(a => a.CustomerDocument == userDocument);
+                .FirstOrDefaultAsync(a => a.Document == userDocument);
 
             if (account == null)
                 throw new InvalidOperationException("Account not found for the specified user.");
@@ -43,7 +43,7 @@ namespace BankAccountTransactions.Data.Repository
             _context.Accounts.Update(account);
             await _context.SaveChangesAsync();
 
-            return amount;
+            return account.Balance;
         }      
     }
 }

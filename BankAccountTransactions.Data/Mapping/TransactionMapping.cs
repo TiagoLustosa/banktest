@@ -14,7 +14,7 @@ namespace BankAccountTransactions.Data.Mappings
 
             builder.Property(x => x.Id)
                 .HasColumnName("id")
-                .HasDefaultValueSql("gen_random_uuid()")
+                .ValueGeneratedOnAdd()
                 .IsRequired();
 
             builder.Property(x => x.SenderDocument)
@@ -32,7 +32,7 @@ namespace BankAccountTransactions.Data.Mappings
                 .HasColumnType("numeric");
             builder.Property(x => x.TransactionDate)
                    .HasColumnName("transactiondate")
-                   .HasColumnType("date");
+                   .HasColumnType("timestamp");
                 
         }
     }

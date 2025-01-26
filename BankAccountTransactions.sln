@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BankAccountTransactions.API
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountTransactions.Application", "BankAccountTransactions.Application\BankAccountTransactions.Application.csproj", "{DE248FC1-798E-4776-B45A-5E6B488DE5B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankAccountTransactions.Test", "BankAccountTransactions.Test\BankAccountTransactions.Test.csproj", "{2BD10C94-8307-4E48-8A78-87D2B74E69D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{DE248FC1-798E-4776-B45A-5E6B488DE5B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE248FC1-798E-4776-B45A-5E6B488DE5B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE248FC1-798E-4776-B45A-5E6B488DE5B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BD10C94-8307-4E48-8A78-87D2B74E69D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BD10C94-8307-4E48-8A78-87D2B74E69D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BD10C94-8307-4E48-8A78-87D2B74E69D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BD10C94-8307-4E48-8A78-87D2B74E69D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,20 +3,18 @@ using BankAccountTransactions.Domain.Repository;
 
 namespace BankAccountTransactions.Application.UseCase
 {
-    public class CreateUserUseCase
+    public class GetAllUserTransactionsUseCase
     {
         private readonly IUserRepository _userRepository;
 
-        public CreateUserUseCase(IUserRepository userRepository)
+        public GetAllUserTransactionsUseCase(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public async Task<User> Execute(User user)
+        public async Task<IEnumerable<Transaction>> Execute(string userDocument)
         {
-           await _userRepository.Insert(user);
-            return user;
+            return await _userRepository.GetAllUserTransactions(userDocument);
         }
     }
 }
-

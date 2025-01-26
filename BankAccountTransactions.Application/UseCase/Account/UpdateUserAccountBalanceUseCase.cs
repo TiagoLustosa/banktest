@@ -16,7 +16,7 @@ namespace BankAccountTransactions.Application.UseCase
             _accountRepository = accountRepository;
         }
 
-        public async Task<decimal> ExecuteAsync(string userDocument, decimal amount)
+        public async Task<decimal> Execute(string userDocument, decimal amount)
         {
             if (string.IsNullOrWhiteSpace(userDocument))
                 throw new ArgumentException("Account document cannot be empty.", nameof(userDocument));

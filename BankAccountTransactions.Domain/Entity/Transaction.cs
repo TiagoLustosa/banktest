@@ -2,7 +2,7 @@
 
 namespace BankAccountTransactions.Domain.Entity
 {
-    public class Transaction : IEntity<Guid>
+    public class Transaction : Entity<Guid>
     {
         public Transaction(Guid id, string senderDocument, string receiverDocument, decimal amount, DateTime transactionDate) : base(id)
         {

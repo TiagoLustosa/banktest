@@ -15,14 +15,31 @@ namespace BankAccountTransactions.Data.Migrations
                 name: "bank");
 
             migrationBuilder.CreateTable(
+                name: "accounts",
+                schema: "bank",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    document = table.Column<string>(type: "varchar(18)", nullable: false),
+                    accountNumber = table.Column<string>(type: "varchar(18)", nullable: false),
+                    balance = table.Column<decimal>(type: "numeric", nullable: false),
+                    createdAt = table.Column<DateTime>(type: "timestamp", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_accounts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "transactions",
                 schema: "bank",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     senderDocument = table.Column<string>(type: "varchar(18)", nullable: false),
                     receiverDocument = table.Column<string>(type: "varchar(18)", nullable: false),
-                    amount = table.Column<decimal>(type: "numeric", nullable: false)
+                    amount = table.Column<decimal>(type: "numeric", nullable: false),
+                    transactiondate = table.Column<DateTime>(type: "timestamp", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -34,7 +51,7 @@ namespace BankAccountTransactions.Data.Migrations
                 schema: "bank",
                 columns: table => new
                 {
-                    id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
+                    id = table.Column<Guid>(type: "uuid", nullable: false),
                     name = table.Column<string>(type: "varchar(70)", nullable: false),
                     email = table.Column<string>(type: "varchar(100)", nullable: false),
                     password = table.Column<string>(type: "varchar(100)", nullable: false),
@@ -46,28 +63,13 @@ namespace BankAccountTransactions.Data.Migrations
                 {
                     table.PrimaryKey("PK_users", x => x.id);
                     table.CheckConstraint("CK_users_userType_Enum", "\"userType\" IN ('PF', 'PJ')");
-                });
-
-            migrationBuilder.CreateTable(
-                name: "accounts",
-                schema: "bank",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false, defaultValueSql: "gen_random_uuid()"),
-                    customerId = table.Column<Guid>(type: "uuid", nullable: false),
-                    accountNumber = table.Column<string>(type: "varchar(18)", nullable: false),
-                    balance = table.Column<decimal>(type: "numeric", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_accounts", x => x.id);
                     table.ForeignKey(
-                        name: "FK_accounts_users_customerId",
-                        column: x => x.customerId,
+                        name: "FK_users_accounts_accountId",
+                        column: x => x.accountId,
                         principalSchema: "bank",
-                        principalTable: "users",
-                        principalColumn: "id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalTable: "accounts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -78,16 +80,17 @@ namespace BankAccountTransactions.Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_accounts_customerId",
-                schema: "bank",
-                table: "accounts",
-                column: "customerId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_User_Document",
                 schema: "bank",
                 table: "users",
                 column: "document",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_users_accountId",
+                schema: "bank",
+                table: "users",
+                column: "accountId",
                 unique: true);
         }
 
@@ -95,15 +98,15 @@ namespace BankAccountTransactions.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "accounts",
-                schema: "bank");
-
-            migrationBuilder.DropTable(
                 name: "transactions",
                 schema: "bank");
 
             migrationBuilder.DropTable(
                 name: "users",
+                schema: "bank");
+
+            migrationBuilder.DropTable(
+                name: "accounts",
                 schema: "bank");
         }
     }

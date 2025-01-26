@@ -16,6 +16,13 @@ namespace BankAccountTransactions.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+                 .HasOne(u => u.Account)
+                 .WithOne()
+                 .HasForeignKey<User>(u => u.AccountId)
+                 .OnDelete(DeleteBehavior.Cascade);
+
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
     }

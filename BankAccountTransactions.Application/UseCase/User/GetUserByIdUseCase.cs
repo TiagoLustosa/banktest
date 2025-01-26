@@ -3,19 +3,19 @@ using BankAccountTransactions.Domain.Repository;
 
 namespace BankAccountTransactions.Application.UseCase
 {
-    public class CreateUserUseCase
+
+    public class GetUserByDocumentUseCase
     {
         private readonly IUserRepository _userRepository;
 
-        public CreateUserUseCase(IUserRepository userRepository)
+        public GetUserByDocumentUseCase(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
 
-        public async Task<User> Execute(User user)
+        public async Task<User> Execute(string userDocument)
         {
-           await _userRepository.Insert(user);
-            return user;
+            return await _userRepository.GetByDocument(userDocument) ?? throw new AccessViolationException("User not found");
         }
     }
 }
